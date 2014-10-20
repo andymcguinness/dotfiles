@@ -37,7 +37,6 @@ filetype plugin indent on    " required
 " basic settings
 syntax on               " eternal syntax highlighting
 set nu                  " dem line numbahs
-set hidden              " hidden buffers: go
 set showtabline=2       " always want that tab bar
 set visualbell          " stop that obnoxious warning bell
 set nowrap              " screw that word wrap crap
