@@ -40,7 +40,6 @@ set nu                  " dem line numbahs
 set showtabline=2       " always want that tab bar
 set visualbell          " stop that obnoxious warning bell
 set nowrap              " screw that word wrap crap
-set clipboard=unnamed   " supposed to help copy to Mac, hasn't worked
 set scrolloff=999       " keep me at the center of the screen
 set cursorline          " where am I?
 
@@ -50,6 +49,10 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags    " force Vim to a
 " force vim to delete a file's buffer upon closing -- I switch around git
 " branches a lot, so this has become a severe problem
 autocmd BufEnter * setlocal bufhidden=delete
+
+" copying && pasting fixes -- attempting to hook into the system clipboard
+map <F2> :w !pbcopy<CR><CR>                 " sets F2 to copy to the system clipboard w/out cutting everything
+map <F3> :r !pbpaste<CR>:set nopaste<CR>    " sets F3 to paste from the system clipboard -- with the added bonus of no autoindent madness
 
 " color settings
 colorscheme bvemu       " gawjus
