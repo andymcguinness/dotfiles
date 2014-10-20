@@ -47,6 +47,10 @@ set cursorline          " where am I?
 " autocompletion
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags    " force Vim to autocomplete my HTML tags
 
+" force vim to delete a file's buffer upon closing -- I switch around git
+" branches a lot, so this has become a severe problem
+autocmd BufEnter * setlocal bufhidden=delete
+
 " color settings
 colorscheme bvemu       " gawjus
 " colorscheme jellybeans  " nice and calm
