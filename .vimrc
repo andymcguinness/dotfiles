@@ -18,6 +18,7 @@ Plugin 'elzr/vim-json'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Raimondi/delimitMate'
@@ -40,7 +41,8 @@ set nu                  " dem line numbahs
 set showtabline=2       " always want that tab bar
 set visualbell          " stop that obnoxious warning bell
 set nowrap              " screw that word wrap crap
-set scrolloff=999       " keep me at the center of the screen
+set scrolloff=999       " keep me vertically at the center of the screen
+set sidescrolloff=999   " keep me horizontally at the center of the screen
 set cursorline          " where am I?
 
 " autocompletion
