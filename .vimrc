@@ -13,6 +13,7 @@ Plugin '1995eaton/vim-better-javascript-completion', { 'for' : 'javascript' }
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'docunext/closetag.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'elzr/vim-json'
 Plugin 'flazz/vim-colorschemes'
@@ -22,7 +23,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Raimondi/delimitMate'
-Plugin 'skammer/vim-css-color'
+" Plugin 'skammer/vim-css-color'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplcache.vim'
@@ -58,7 +59,6 @@ map <F3> :r !pbpaste<CR>:set nopaste<CR>    " sets F3 to paste from the system c
 
 " color settings
 colorscheme bvemu       " gawjus
-" colorscheme jellybeans  " nice and calm
 set t_Co=256            " 256 color mode engage
 
 " indentation fixes
@@ -67,6 +67,29 @@ set softtabstop=4       " but it's important stuff
 set smarttab            " namely, setting the tab widths to all be 4 spaces
 set expandtab
 
+" fix other people's janky tabbing in a jiffy
+nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+
+" quickly set wrapping
+nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
+
+" linewise moving fixes -- for wrapped text
+nmap j gj  " when you move up and down through wrapped text, it will now
+nmap k gk  " move down WITHIN lines
+
+" searching upgrades
+set incsearch              " highlights as you type an expression
+set ignorecase             " makes search case-insensitive, except...
+set smartcase              " ...when you type an uppercase character
+set hlsearch               " highlight all search results
+nmap \q :nohlsearch<CR>    " bind no highlighting to the \e cmd
+
+" NERDTree upgrade -- two-character invocation
+nmap \e :NERDTreeToggle<CR>
+
+" CloseTag loading only on html/xhtml
+autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
 
 " airline
 let g:airline_powerline_fonts=1                 " bring on the pretty
