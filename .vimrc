@@ -14,6 +14,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'docunext/closetag.vim'
+Plugin 'fweep/vim-tabber'
 Plugin 'godlygeek/tabular'
 Plugin 'elzr/vim-json'
 Plugin 'flazz/vim-colorschemes'
@@ -30,28 +31,23 @@ Plugin 'Shougo/neocomplcache.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
+Plugin 'vim-scripts/matchit.zip.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-
 " basic settings
-syntax on               " eternal syntax highlighting
-set nu                  " dem line numbahs
-set showtabline=2       " always want that tab bar
-set visualbell          " stop that obnoxious warning bell
-set nowrap              " screw that word wrap crap
-set scrolloff=999       " keep me vertically at the center of the screen
-set sidescrolloff=999   " keep me horizontally at the center of the screen
-set cursorline          " where am I?
-
-" autocompletion
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags    " force Vim to autocomplete my HTML tags
-
-" force vim to delete a file's buffer upon closing -- I switch around git
-" branches a lot, so this has become a severe problem
-autocmd BufEnter * setlocal bufhidden=delete
+syntax on                       " eternal syntax highlighting
+set nu                          " dem line numbahs
+set showtabline=2               " always want that tab bar
+set visualbell                  " stop that obnoxious warning bell
+set nowrap                      " screw that word wrap crap
+set scrolloff=999               " keep me vertically at the center of the screen
+set sidescrolloff=999           " keep me horizontally at the center of the screen
+set cursorline                  " where am I?
+set backspace=indent,eol,start  " better backspacing
+set hidden                      " hidden buffers
 
 " copying && pasting fixes -- attempting to hook into the system clipboard
 map <F2> :w !pbcopy<CR><CR>                 " sets F2 to copy to the system clipboard w/out cutting everything
@@ -73,16 +69,14 @@ nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 " quickly set wrapping
 nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
 
-" linewise moving fixes -- for wrapped text
-nmap j gj  " when you move up and down through wrapped text, it will now
-nmap k gk  " move down WITHIN lines
-
 " searching upgrades
 set incsearch              " highlights as you type an expression
 set ignorecase             " makes search case-insensitive, except...
 set smartcase              " ...when you type an uppercase character
 set hlsearch               " highlight all search results
-nmap \q :nohlsearch<CR>    " bind no highlighting to the \e cmd
+
+" set \q to kill highlighting 
+nmap \q :nohlsearch<CR> 
 
 " NERDTree upgrade -- two-character invocation
 nmap \e :NERDTreeToggle<CR>
@@ -91,10 +85,73 @@ nmap \e :NERDTreeToggle<CR>
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
 
+" allow matchit
+filetype plugin on
+
+" lickety-split tab switching
+nmap \g :tabp<CR>       " h (left) key goes to the tab to the left
+nmap \l :tabn<CR>       " l (right) key goes to the tab to the right
+
+" lickety-split buffer switching
+nnoremap <silent> \n :bn<CR>
+nnoremap <silent> \b :bp<CR>
+
 " airline
 let g:airline_powerline_fonts=1                 " bring on the pretty
 set laststatus=2                                " always want that statusbar
-let g:airline#extensions#tabline#enabled=1      " major tabline upgrade
 let g:airline_section_y = '%{strftime("%c")}'   " show the time in the statusbar
 let g:airline_theme='wombat'                    " much better than the original theme
 
+" for Tabber tabline
+set tabline=%!tabber#TabLine()
+let g:tabber_prompt_for_new_label = 1
+
+" Tabber remapping
+nmap \r :TabberLabel<CR>
+nmap \rn :TabberNew<CR>
+
+" Stop that. Stop that right now. 
+noremap <up> :echo "Nope."<CR>
+noremap <down> :echo "Stop that."<CR>
+noremap <left> :echo "Try again."<CR>
+noremap <right> :echo "Come on now."<CR>
+
+" avoiding Esc
+inoremap \i <Esc>
+
+" set up Tabularize to make the pretty
+nnoremap \a :Tabularize /=<CR>
+
+" function to delete all hidden buffers
+function! Wipeout()
+  " list of *all* buffer numbers
+  let l:buffers = range(1, bufnr('$'))
+
+  " what tab page are we in?
+  let l:currentTab = tabpagenr()
+  try
+    " go through all tab pages
+    let l:tab = 0
+    while l:tab < tabpagenr('$')
+      let l:tab += 1
+
+      " go through all windows
+      let l:win = 0
+      while l:win < winnr('$')
+        let l:win += 1
+        " whatever buffer is in this window in this tab, remove it from
+        " l:buffers list
+        let l:thisbuf = winbufnr(l:win)
+        call remove(l:buffers, index(l:buffers, l:thisbuf))
+      endwhile
+    endwhile
+
+    " if there are any buffers left, delete them
+    if len(l:buffers)
+      execute 'bwipeout' join(l:buffers)
+    endif
+  finally
+    " go back to our original tab page
+    execute 'tabnext' l:currentTab
+  endtry
+endfunction
