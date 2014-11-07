@@ -28,6 +28,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/unite.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
@@ -92,6 +93,9 @@ filetype plugin on
 nmap \g :tabp<CR>       " h (left) key goes to the tab to the left
 nmap \l :tabn<CR>       " l (right) key goes to the tab to the right
 
+" tab insta-kill
+nmap \x :tabclose<CR>
+
 " lickety-split buffer switching
 nnoremap <silent> \n :bn<CR>
 nnoremap <silent> \b :bp<CR>
@@ -121,6 +125,9 @@ inoremap \i <Esc>
 
 " set up Tabularize to make the pretty
 nnoremap \a :Tabularize /=<CR>
+
+" Unite buffer list
+nmap \v :Unite buffer<CR>
 
 " function to delete all hidden buffers
 function! Wipeout()
