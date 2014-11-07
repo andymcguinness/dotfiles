@@ -45,7 +45,7 @@ ZSH_THEME="norm"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(bower brew common-aliases gem git npm svn-fast-info)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

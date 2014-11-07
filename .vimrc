@@ -23,13 +23,13 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'Raimondi/delimitMate'
 " Plugin 'skammer/vim-css-color'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'Townk/vim-autoclose'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
 Plugin 'vim-scripts/matchit.zip.git'
@@ -55,7 +55,7 @@ map <F2> :w !pbcopy<CR><CR>                 " sets F2 to copy to the system clip
 map <F3> :r !pbpaste<CR>:set nopaste<CR>    " sets F3 to paste from the system clipboard -- with the added bonus of no autoindent madness
 
 " color settings
-colorscheme bvemu       " gawjus
+colorscheme sorcerer    " gawjus
 set t_Co=256            " 256 color mode engage
 
 " indentation fixes
@@ -77,7 +77,7 @@ set smartcase              " ...when you type an uppercase character
 set hlsearch               " highlight all search results
 
 " set \q to kill highlighting 
-nmap \q :nohlsearch<CR> 
+nmap \q :nohlsearch<CR>
 
 " NERDTree upgrade -- two-character invocation
 nmap \e :NERDTreeToggle<CR>
@@ -104,7 +104,7 @@ nnoremap <silent> \b :bp<CR>
 let g:airline_powerline_fonts=1                 " bring on the pretty
 set laststatus=2                                " always want that statusbar
 let g:airline_section_y = '%{strftime("%c")}'   " show the time in the statusbar
-let g:airline_theme='wombat'                    " much better than the original theme
+let g:airline_theme = 'murmur'                  " picking the best theme
 
 " for Tabber tabline
 set tabline=%!tabber#TabLine()
