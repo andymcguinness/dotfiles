@@ -55,7 +55,7 @@ map <F2> :w !pbcopy<CR><CR>                 " sets F2 to copy to the system clip
 map <F3> :r !pbpaste<CR>:set nopaste<CR>    " sets F3 to paste from the system clipboard -- with the added bonus of no autoindent madness
 
 " color settings
-colorscheme hybrid      " gawjus
+colorscheme bvemu       " gawjus
 set t_Co=256            " 256 color mode engage
 
 " indentation fixes
