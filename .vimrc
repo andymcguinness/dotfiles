@@ -69,6 +69,8 @@ nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 
 " quickly set wrapping
 nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
+" related, preserve words when breaking
+set linebreak
 
 " searching upgrades
 set incsearch              " highlights as you type an expression
@@ -93,12 +95,16 @@ filetype plugin on
 nmap \g :tabp<CR>       " h (left) key goes to the tab to the left
 nmap \l :tabn<CR>       " l (right) key goes to the tab to the right
 
-" tab insta-kill
-nmap \x :tabclose<CR>
+" killing all other buffers
+nmap \x :call Wipeout()<CR>
 
 " lickety-split buffer switching
 nnoremap <silent> \n :bn<CR>
 nnoremap <silent> \b :bp<CR>
+
+" linewise moving
+nnoremap j gj
+nnoremap k gk
 
 " airline
 let g:airline_powerline_fonts=1                 " bring on the pretty
