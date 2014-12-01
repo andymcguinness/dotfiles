@@ -1,13 +1,16 @@
+" VIMRC
+" 
+" by Maia McGuinness
+
+" *** BEGIN VUNDLE ***
+" vundle settings
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" vundle plugins
 Plugin '1995eaton/vim-better-css-completion', { 'for' : 'css' }
 Plugin '1995eaton/vim-better-javascript-completion', { 'for' : 'javascript' }
 Plugin 'airblade/vim-gitgutter'
@@ -21,6 +24,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mattn/emmet-vim'
+Plugin 'msanders/snipmate.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Raimondi/delimitMate'
@@ -31,14 +35,19 @@ Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-haml'
 Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
 Plugin 'vim-scripts/matchit.zip.git'
 
-" All of your Plugins must be added before the following line
+" various vundle calls
 call vundle#end()            " required
 filetype plugin indent on    " required
+filetype plugin on           " required
+" *** END VUNDLE ***
 
-" basic settings
+
+" *** BEGIN BASIC SETTINGS ***
+" various basic settings
 syntax on                       " eternal syntax highlighting
 set nu                          " dem line numbahs
 set showtabline=2               " always want that tab bar
@@ -49,95 +58,105 @@ set sidescrolloff=999           " keep me horizontally at the center of the scre
 set cursorline                  " where am I?
 set backspace=indent,eol,start  " better backspacing
 set hidden                      " hidden buffers
-
-" copying && pasting fixes -- attempting to hook into the system clipboard
-map <F2> :w !pbcopy<CR><CR>                 " sets F2 to copy to the system clipboard w/out cutting everything
-map <F3> :r !pbpaste<CR>:set nopaste<CR>    " sets F3 to paste from the system clipboard -- with the added bonus of no autoindent madness
+set linebreak                   " preserve words when breaking
 
 " color settings
 colorscheme bvemu       " gawjus
 set t_Co=256            " 256 color mode engage
 
-" indentation fixes
+" indentation settings
 set shiftwidth=4        " actually have no idea what all these do?
 set softtabstop=4       " but it's important stuff
 set smarttab            " namely, setting the tab widths to all be 4 spaces
 set expandtab
 
-" fix other people's janky tabbing in a jiffy
-nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
-
-" quickly set wrapping
-nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
-" related, preserve words when breaking
-set linebreak
-
-" searching upgrades
+" searching settings
 set incsearch              " highlights as you type an expression
 set ignorecase             " makes search case-insensitive, except...
 set smartcase              " ...when you type an uppercase character
 set hlsearch               " highlight all search results
 
-" set \q to kill highlighting 
-nmap \q :nohlsearch<CR>
+" command-line completion settings
+set wildmode=list:longest,full
+" *** END BASIC SETTINGS ***
 
-" NERDTree upgrade -- two-character invocation
-nmap \e :NERDTreeToggle<CR>
 
-" Show hidden files in NERDTree
+" *** BEGIN PLUGIN SETTINGS ***
+" nerdtree settings
 let NERDTreeShowHidden=1
 
-" CloseTag loading only on html/xhtml
-autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
-autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
-
-" allow matchit
-filetype plugin on
-
-" lickety-split tab switching
-nmap \g :tabp<CR>       " h (left) key goes to the tab to the left
-nmap \l :tabn<CR>       " l (right) key goes to the tab to the right
-
-" killing all other buffers
-nmap \x :call Wipeout()<CR>
-
-" lickety-split buffer switching
-nnoremap <silent> \n :bn<CR>
-nnoremap <silent> \b :bp<CR>
-
-" linewise moving
-nnoremap j gj
-nnoremap k gk
-
-" airline
+" airline settings
 let g:airline_powerline_fonts=1                 " bring on the pretty
 set laststatus=2                                " always want that statusbar
 let g:airline_section_y = '%{strftime("%c")}'   " show the time in the statusbar
 let g:airline_theme = 'murmur'                  " picking the best theme
 
-" for Tabber tabline
+" tabber settings
 set tabline=%!tabber#TabLine()
 let g:tabber_prompt_for_new_label = 1
 
-" Tabber remapping
+" closetag settings
+autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
+autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
+" *** END PLUGIN SETTINGS ***
+
+
+" *** BEGIN MAPPINGS ***
+" copying && pasting mappings
+map <F2> :w !pbcopy<CR><CR>
+map <F3> :r !pbpaste<CR>:set nopaste<CR>
+
+" tabfix mapping
+nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+
+" wrap mapping
+nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
+
+" kill search hl mapping
+nmap \q :nohlsearch<CR>
+
+" NERDTree mapping
+nmap \e :NERDTreeToggle<CR>
+
+" Wipeout() mapping
+nmap \x :call Wipeout()<CR>
+
+" buffer-switching mapping
+nnoremap <silent> \n :bn<CR>
+nnoremap <silent> \b :bp<CR>
+
+" linewise moving mapping
+nnoremap j gj
+nnoremap k gk
+
+" Tabber mapping
 nmap \r :TabberLabel<CR>
 nmap \rn :TabberNew<CR>
 
-" Stop that. Stop that right now. 
+" disabling the arrow keys mapping
 noremap <up> :echo "Nope."<CR>
 noremap <down> :echo "Stop that."<CR>
 noremap <left> :echo "Try again."<CR>
 noremap <right> :echo "Come on now."<CR>
 
-" avoiding Esc
+" Esc remapping
 inoremap \i <Esc>
 
-" set up Tabularize to make the pretty
-nnoremap \a :Tabularize /=<CR>
+" common Tabularize mappings
+nnoremap \= :Tabularize /=<CR>
+nnoremap \: :Tabularize /:<CR>
 
-" Unite buffer list
+" Unite buffer list mapping
 nmap \v :Unite buffer<CR>
 
+" function autocomplete mapping
+inoremap {<cr> {<cr>}<c-o>O<tab>
+inoremap [<cr> [<cr>]<c-o>O<tab>
+inoremap (<cr> (<cr>)<c-o>O<tab>
+" *** END MAPPINGS ***
+
+
+" *** BEGIN WIPEOUT() ***
 " function to delete all hidden buffers
 function! Wipeout()
   " list of *all* buffer numbers
@@ -171,3 +190,4 @@ function! Wipeout()
     execute 'tabnext' l:currentTab
   endtry
 endfunction
+" *** END WIPEOUT() ***
