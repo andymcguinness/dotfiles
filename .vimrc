@@ -2,15 +2,15 @@
 " 
 " by Maia McGuinness
 
-" *** BEGIN VUNDLE ***
-" vundle settings
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" === VUNDLE SETTINGS === "
+" basic settings
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-" vundle plugins
+" plugins
 Plugin '1995eaton/vim-better-css-completion', { 'for' : 'css' }
 Plugin '1995eaton/vim-better-javascript-completion', { 'for' : 'javascript' }
 Plugin 'airblade/vim-gitgutter'
@@ -22,15 +22,14 @@ Plugin 'godlygeek/tabular'
 Plugin 'elzr/vim-json'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mattn/emmet-vim'
 Plugin 'msanders/snipmate.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Raimondi/delimitMate'
-" Plugin 'skammer/vim-css-color'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'tomtom/tcomment_vim'
@@ -39,15 +38,12 @@ Plugin 'tpope/vim-haml'
 Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
 Plugin 'vim-scripts/matchit.zip.git'
 
-" various vundle calls
+" various calls
 call vundle#end()            " required
 filetype plugin indent on    " required
-filetype plugin on           " required
-" *** END VUNDLE ***
 
-
-" *** BEGIN BASIC SETTINGS ***
-" various basic settings
+" === BASIC SETTINGS === "
+" various settings
 syntax on                       " eternal syntax highlighting
 set nu                          " dem line numbahs
 set showtabline=2               " always want that tab bar
@@ -59,6 +55,7 @@ set cursorline                  " where am I?
 set backspace=indent,eol,start  " better backspacing
 set hidden                      " hidden buffers
 set linebreak                   " preserve words when breaking
+filetype plugin on              " required
 
 " color settings
 colorscheme bvemu       " gawjus
@@ -78,10 +75,8 @@ set hlsearch               " highlight all search results
 
 " command-line completion settings
 set wildmode=list:longest,full
-" *** END BASIC SETTINGS ***
 
-
-" *** BEGIN PLUGIN SETTINGS ***
+" === PLUGIN SETTINGS === "
 " nerdtree settings
 let NERDTreeShowHidden=1
 
@@ -98,10 +93,8 @@ let g:tabber_prompt_for_new_label = 1
 " closetag settings
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
-" *** END PLUGIN SETTINGS ***
 
-
-" *** BEGIN MAPPINGS ***
+" === MAPPINGS === "
 " copying && pasting mappings
 map <F2> :w !pbcopy<CR><CR>
 map <F3> :r !pbpaste<CR>:set nopaste<CR>
@@ -153,10 +146,8 @@ nmap \v :Unite buffer<CR>
 inoremap {<cr> {<cr>}<c-o>O<tab>
 inoremap [<cr> [<cr>]<c-o>O<tab>
 inoremap (<cr> (<cr>)<c-o>O<tab>
-" *** END MAPPINGS ***
 
-
-" *** BEGIN WIPEOUT() ***
+" === WIPEOUT() === "
 " function to delete all hidden buffers
 function! Wipeout()
   " list of *all* buffer numbers
@@ -190,4 +181,3 @@ function! Wipeout()
     execute 'tabnext' l:currentTab
   endtry
 endfunction
-" *** END WIPEOUT() ***
