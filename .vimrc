@@ -17,7 +17,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'docunext/closetag.vim'
-Plugin 'fweep/vim-tabber'
+" Plugin 'fweep/vim-tabber'
 Plugin 'godlygeek/tabular'
 Plugin 'elzr/vim-json'
 Plugin 'flazz/vim-colorschemes'
@@ -58,7 +58,7 @@ set linebreak                   " preserve words when breaking
 filetype plugin on              " required
 
 " color settings
-colorscheme bvemu       " gawjus
+colorscheme Tomorrow    " gawjus
 set t_Co=256            " 256 color mode engage
 
 " indentation settings
@@ -81,14 +81,16 @@ set wildmode=list:longest,full
 let NERDTreeShowHidden=1
 
 " airline settings
-let g:airline_powerline_fonts=1                 " bring on the pretty
-set laststatus=2                                " always want that statusbar
-let g:airline_section_y = '%{strftime("%c")}'   " show the time in the statusbar
-let g:airline_theme = 'murmur'                  " picking the best theme
+let g:airline#extensions#tabline#formatter = 'unique_tail'  " fix how files are displayed in tabline
+let g:airline#extensions#tabline#enabled = 1                " dat tabline doe
+let g:airline_powerline_fonts=1                             " bring on the pretty
+set laststatus=2                                            " always want that statusbar
+let g:airline_section_y = '%{strftime("%c")}'               " show the time in the statusbar
+let g:airline_theme = 'tomorrow'                            " picking the best theme
 
 " tabber settings
-set tabline=%!tabber#TabLine()
-let g:tabber_prompt_for_new_label = 1
+" set tabline=%!tabber#TabLine()
+" let g:tabber_prompt_for_new_label = 1
 
 " closetag settings
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
@@ -136,8 +138,8 @@ noremap <right> :echo "Come on now."<CR>
 inoremap \i <Esc>
 
 " common Tabularize mappings
-nnoremap \= :Tabularize /=<CR>
-nnoremap \: :Tabularize /:<CR>
+" nnoremap \= :Tabularize /=<CR>
+" nnoremap \: :Tabularize /:<CR>
 
 " Unite buffer list mapping
 nmap \v :Unite buffer<CR>
