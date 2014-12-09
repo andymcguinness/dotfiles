@@ -125,8 +125,8 @@ nnoremap j gj
 nnoremap k gk
 
 " Tabber mapping
-nmap \r :TabberLabel<CR>
-nmap \rn :TabberNew<CR>
+" nmap \r :TabberLabel<CR>
+" nmap \rn :TabberNew<CR>
 
 " disabling the arrow keys mapping
 noremap <up> :echo "Nope."<CR>
@@ -138,8 +138,8 @@ noremap <right> :echo "Come on now."<CR>
 inoremap \i <Esc>
 
 " common Tabularize mappings
-" nnoremap \= :Tabularize /=<CR>
-" nnoremap \: :Tabularize /:<CR>
+nnoremap \= :Tabularize /=<CR>
+nnoremap \: :Tabularize /:<CR>
 
 " Unite buffer list mapping
 nmap \v :Unite buffer<CR>
