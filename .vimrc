@@ -14,10 +14,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin '1995eaton/vim-better-css-completion', { 'for' : 'css' }
 Plugin '1995eaton/vim-better-javascript-completion', { 'for' : 'javascript' }
 Plugin 'airblade/vim-gitgutter'
-Plugin 'bling/vim-airline'
+Plugin 'ap/vim-buftabline'
+" Plugin 'bling/vim-airline'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'docunext/closetag.vim'
-" Plugin 'fweep/vim-tabber'
 Plugin 'godlygeek/tabular'
 Plugin 'elzr/vim-json'
 Plugin 'flazz/vim-colorschemes'
@@ -36,8 +36,9 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-haml'
-Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
 Plugin 'vim-scripts/matchit.zip.git'
+Plugin 'vim-scripts/Obvious-Mode'
+Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
 
 " various calls
 call vundle#end()            " required
@@ -50,8 +51,8 @@ set nu                          " dem line numbahs
 set showtabline=2               " always want that tab bar
 set visualbell                  " stop that obnoxious warning bell
 set nowrap                      " screw that word wrap crap
-set scrolloff=999               " keep me vertically at the center of the screen
-set sidescrolloff=999           " keep me horizontally at the center of the screen
+set scrolloff=5                 " keep me vertically at the center of the screen
+set sidescrolloff=5             " keep me horizontally at the center of the screen
 set cursorline                  " where am I?
 set backspace=indent,eol,start  " better backspacing
 set hidden                      " hidden buffers
@@ -59,6 +60,15 @@ set linebreak                   " preserve words when breaking
 filetype plugin on              " required
 set autoread                    " change a file instantly when it's changed outside
 set noswapfile                  " no more .swp files
+set cmdheight=2                 " fits Press Enter to Continue
+set lazyredraw                  " don't redraw in macros
+set nostartofline               " don't jump to first character when paging
+set noshowmode                  " I already know what mode we're in thx to airline
+
+" show ↪ at the beginning of wrapped lines
+if has("linebreak")
+    let &sbr = nr2char(8618).' '
+endif
 
 " color settings
 colorscheme Tomorrow    " gawjus
@@ -79,24 +89,76 @@ set hlsearch               " highlight all search results
 " command-line completion settings
 set wildmode=list:longest,full
 
-" return to last edit position when opening files
-au BufReadPost * if line("'\") > 1 && line("'\"") <= line("$") | exe "normal! g`\" | endif
+" open to same spot in file when reopening
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 " remember info about open buffers on close
 set viminfo^=%
+
+" === TABLINE === "
+" colors -- make it purdy
+hi TabLineSel ctermfg=7 ctermbg=33
+hi TabLineFill ctermfg=243
+
+" === STATUSLINE === "
+" make it appear
+set laststatus=2
+
+" create it
+set statusline=%1*\ %{Mode()}\ %0*        " what's the haps
+set statusline+=%2*\ %0*
+set statusline+=%4*[%n]              " buffer no.
+set statusline+=%3*\ \ %0*
+set statusline+=%5*\ \ %{fugitive#statusline()}
+set statusline+=%3*\ \ %0*
+set statusline+=%5*%f%m              " full filename
+set statusline+=%3*\ \ %0*
+set statusline+=%5*%y                " filetype
+
+set statusline+=%=                  " splits left/right
+
+set statusline+=%3*\ %0*
+set statusline+=%5*Cols:\ %-4c         " column counter
+set statusline+=%3*\ %0*
+set statusline+=%5*Lines:\ %l/%-4L     " lines of total lines
+set statusline+=%3*\ %0*
+set statusline+=%5*Percent:\ %-4P      " percent through doc
+
+" make it work
+function! Mode()
+    redraw
+    let l:mode = mode()
+    
+    if     mode ==# "n"  | exec 'hi User1 ctermfg=15 ctermbg=33 | hi User2 ctermfg=33 ctermbg=243'    | return "NORMAL"
+    elseif mode ==# "i"  | exec 'hi User1 ctermfg=15 ctermbg=40 | hi User2 ctermfg=40 ctermbg=243'  | return "INSERT"
+    elseif mode ==# "r"  | exec 'hi User1 ctermfg=15 ctermbg=196 | hi User2 ctermfg=196 ctermbg=243'| return "REPLACE"
+    elseif mode ==# "R"  | exec 'hi User1 ctermfg=15 ctermbg=196 | hi User2 ctermfg=196 ctermbg=243'| return "REPLACE"
+    elseif mode ==# "v"  | exec 'hi User1 ctermfg=15 ctermbg=208 | hi User2 ctermfg=208 ctermbg=243'   | return "VISUAL"
+    elseif mode ==# "V"  | exec 'hi User1 ctermfg=15 ctermbg=208 | hi User2 ctermfg=208 ctermbg=243'   | return "V-LINE"
+    elseif mode ==# "" | exec 'hi User1 ctermfg=15 ctermbg=208 | hi User2 ctermfg=208 ctermbg=243'   | return "V-BLOCK"
+    else                 | return l:mode
+    endif
+endfunc
+
+" style it 
+hi User3 ctermfg=15 ctermbg=243
+hi User4 ctermfg=15 ctermbg=243
+hi User5 ctermfg=15 ctermbg=243
 
 " === PLUGIN SETTINGS === "
 " nerdtree settings
 let NERDTreeShowHidden=1
 
 " airline settings
-let g:airline#extensions#tabline#formatter = 'unique_tail'  " fix how files are displayed in tabline
-let g:airline#extensions#tabline#enabled = 1                " dat tabline doe
-let g:airline_powerline_fonts=1                             " bring on the pretty
-set laststatus=2                                            " always want that statusbar
-let g:airline_theme = 'tomorrow'                            " picking the best theme
-let g:airline#extensions#branch#enabled = 1
-let g:airline_section_y = '%{getcwd()}'
-let g:airline_section_d = '%n'
+" let g:airline#extensions#tabline#formatter = 'unique_tail'  " fix how files are displayed in tabline
+" let g:airline#extensions#tabline#enabled = 1                " dat tabline doe
+" let g:airline_powerline_fonts=1                             " bring on the pretty
+" let g:airline_theme = 'tomorrow'                            " picking the best theme
+" let g:airline#extensions#branch#enabled = 1
+" let g:airline_section_y = '%n'
+" let g:airline_section_warning = ''
 
 " closetag settings
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
