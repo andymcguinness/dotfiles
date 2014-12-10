@@ -33,6 +33,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-haml'
 Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
@@ -56,16 +57,18 @@ set backspace=indent,eol,start  " better backspacing
 set hidden                      " hidden buffers
 set linebreak                   " preserve words when breaking
 filetype plugin on              " required
+set autoread                    " change a file instantly when it's changed outside
+set noswapfile                  " no more .swp files
 
 " color settings
 colorscheme Tomorrow    " gawjus
 set t_Co=256            " 256 color mode engage
 
 " indentation settings
-set shiftwidth=4        " actually have no idea what all these do?
-set softtabstop=4       " but it's important stuff
-set smarttab            " namely, setting the tab widths to all be 4 spaces
-set expandtab
+set shiftwidth=4        " tab = 4 spaces
+set softtabstop=4       " tab = 4 spaces
+set smarttab            " be smart about tabs
+set expandtab           " spaces, not tabs
 
 " searching settings
 set incsearch              " highlights as you type an expression
@@ -76,6 +79,11 @@ set hlsearch               " highlight all search results
 " command-line completion settings
 set wildmode=list:longest,full
 
+" return to last edit position when opening files
+au BufReadPost * if line("'\") > 1 && line("'\"") <= line("$") | exe "normal! g`\" | endif
+" remember info about open buffers on close
+set viminfo^=%
+
 " === PLUGIN SETTINGS === "
 " nerdtree settings
 let NERDTreeShowHidden=1
@@ -85,48 +93,46 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'  " fix how files are 
 let g:airline#extensions#tabline#enabled = 1                " dat tabline doe
 let g:airline_powerline_fonts=1                             " bring on the pretty
 set laststatus=2                                            " always want that statusbar
-let g:airline_section_y = '%{strftime("%c")}'               " show the time in the statusbar
 let g:airline_theme = 'tomorrow'                            " picking the best theme
-
-" tabber settings
-" set tabline=%!tabber#TabLine()
-" let g:tabber_prompt_for_new_label = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline_section_y = '%{getcwd()}'
+let g:airline_section_d = '%n'
 
 " closetag settings
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
 
 " === MAPPINGS === "
+" mapleader -- v important
+let mapleader = "\\"
+let g:mapleader = "\\"
+
 " copying && pasting mappings
 map <F2> :w !pbcopy<CR><CR>
 map <F3> :r !pbpaste<CR>:set nopaste<CR>
 
 " tabfix mapping
-nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+nmap <leader>t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 
 " wrap mapping
-nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
+nmap <leader>w :setlocal wrap!<CR>:setlocal wrap?<CR>
 
 " kill search hl mapping
-nmap \q :nohlsearch<CR>
+nmap <leader>q :nohlsearch<CR>
 
 " NERDTree mapping
-nmap \e :NERDTreeToggle<CR>
+nmap <leader>e :NERDTreeToggle<CR>
 
 " Wipeout() mapping
-nmap \x :call Wipeout()<CR>
+nmap <leader>x :call Wipeout()<CR>
 
 " buffer-switching mapping
-nnoremap <silent> \n :bn<CR>
-nnoremap <silent> \b :bp<CR>
+nnoremap <silent> <leader>n :bn<CR>
+nnoremap <silent> <leader>b :bp<CR>
 
 " linewise moving mapping
 nnoremap j gj
 nnoremap k gk
-
-" Tabber mapping
-" nmap \r :TabberLabel<CR>
-" nmap \rn :TabberNew<CR>
 
 " disabling the arrow keys mapping
 noremap <up> :echo "Nope."<CR>
@@ -135,21 +141,24 @@ noremap <left> :echo "Try again."<CR>
 noremap <right> :echo "Come on now."<CR>
 
 " Esc remapping
-inoremap \i <Esc>
+inoremap <leader>i <Esc>
 
 " common Tabularize mappings
-nnoremap \= :Tabularize /=<CR>
-nnoremap \: :Tabularize /:<CR>
+nnoremap <leader>= :Tabularize /=<CR>
+nnoremap <leader>: :Tabularize /:<CR>
 
 " Unite buffer list mapping
-nmap \v :Unite buffer<CR>
+nmap <leader>v :Unite buffer<CR>
 
 " function autocomplete mapping
 inoremap {<cr> {<cr>}<c-o>O<tab>
 inoremap [<cr> [<cr>]<c-o>O<tab>
 inoremap (<cr> (<cr>)<c-o>O<tab>
 
-" === WIPEOUT() === "
+" remove the Windows ^M - when the encodings gets messed up
+noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+" === FUNCTIONS === "
 " function to delete all hidden buffers
 function! Wipeout()
   " list of *all* buffer numbers
