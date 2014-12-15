@@ -151,23 +151,14 @@ hi User5 ctermfg=15 ctermbg=243
 " nerdtree settings
 let NERDTreeShowHidden=1
 
-" airline settings
-" let g:airline#extensions#tabline#formatter = 'unique_tail'  " fix how files are displayed in tabline
-" let g:airline#extensions#tabline#enabled = 1                " dat tabline doe
-" let g:airline_powerline_fonts=1                             " bring on the pretty
-" let g:airline_theme = 'tomorrow'                            " picking the best theme
-" let g:airline#extensions#branch#enabled = 1
-" let g:airline_section_y = '%n'
-" let g:airline_section_warning = ''
-
 " closetag settings
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
 
 " === MAPPINGS === "
 " mapleader -- v important
-let mapleader = "\\"
-let g:mapleader = "\\"
+let mapleader = ","
+let g:mapleader = ","
 
 " copying && pasting mappings
 map <F2> :w !pbcopy<CR><CR>
@@ -196,12 +187,6 @@ nnoremap <silent> <leader>b :bp<CR>
 nnoremap j gj
 nnoremap k gk
 
-" disabling the arrow keys mapping
-noremap <up> :echo "Nope."<CR>
-noremap <down> :echo "Stop that."<CR>
-noremap <left> :echo "Try again."<CR>
-noremap <right> :echo "Come on now."<CR>
-
 " Esc remapping
 inoremap <leader>i <Esc>
 
@@ -219,6 +204,15 @@ inoremap (<cr> (<cr>)<c-o>O<tab>
 
 " remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+
+" close buffer but not window
+map <leader>bw :bp<bar>sp<bar>bn<bar>bd<CR>
+
+" arrow keys to switch between windows
+nmap <Right> <c-w>l
+nmap <Left> <c-w>h
+nmap <Up> <c-w>k
+nmap <Down> <c-w>j
 
 " === FUNCTIONS === "
 " function to delete all hidden buffers
