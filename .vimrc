@@ -214,6 +214,12 @@ nmap <Left> <c-w>h
 nmap <Up> <c-w>k
 nmap <Down> <c-w>j
 
+" fix when I do uppercase versions of lowercase commands
+command Q q
+command W w
+command Wq wq
+command WQ wq
+
 " === FUNCTIONS === "
 " function to delete all hidden buffers
 function! Wipeout()
