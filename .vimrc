@@ -26,6 +26,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mattn/emmet-vim'
 Plugin 'msanders/snipmate.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Raimondi/delimitMate'
@@ -79,6 +80,12 @@ set shiftwidth=4        " tab = 4 spaces
 set softtabstop=4       " tab = 4 spaces
 set smarttab            " be smart about tabs
 set expandtab           " spaces, not tabs
+set autoindent
+filetype plugin indent on
+
+" Ruby/Coffeescript indentation settings
+au FileType ruby setl sw=2 sts=2
+au FileType coffeescript setl sw=2 sts=2
 
 " searching settings
 set incsearch              " highlights as you type an expression
@@ -96,6 +103,12 @@ autocmd BufReadPost *
     \ endif
 " remember info about open buffers on close
 set viminfo^=%
+
+" view indentation levels
+" set list listchars=tab:\|\ 
+" highlight Whitespace cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
+" autocmd ColorScheme * highlight Whitespace gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
+" match Whitespace /  \+/
 
 " === TABLINE === "
 " colors -- make it purdy
@@ -154,6 +167,12 @@ let NERDTreeShowHidden=1
 " closetag settings
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
+
+" vim-indent-guides settings
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=255
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=254
 
 " === MAPPINGS === "
 " mapleader -- v important
@@ -215,10 +234,10 @@ nmap <Up> <c-w>k
 nmap <Down> <c-w>j
 
 " fix when I do uppercase versions of lowercase commands
-command Q q
-command W w
-command Wq wq
-command WQ wq
+cmap Q q
+cmap W w
+cmap Wq wq
+cmap WQ wq
 
 " === FUNCTIONS === "
 " function to delete all hidden buffers
