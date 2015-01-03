@@ -51,7 +51,7 @@ syntax on                       " eternal syntax highlighting
 set nu                          " dem line numbahs
 set showtabline=2               " always want that tab bar
 set visualbell                  " stop that obnoxious warning bell
-set nowrap                      " screw that word wrap crap
+set wrap                        " I am a fan of word wrap
 set scrolloff=5                 " keep me vertically at the center of the screen
 set sidescrolloff=5             " keep me horizontally at the center of the screen
 set cursorline                  " where am I?
@@ -65,6 +65,7 @@ set cmdheight=2                 " fits Press Enter to Continue
 set lazyredraw                  " don't redraw in macros
 set nostartofline               " don't jump to first character when paging
 set noshowmode                  " I already know what mode we're in thx to airline
+set foldmethod=manual           " don't auto fold things
 
 " show ↪ at the beginning of wrapped lines
 if has("linebreak")
@@ -161,6 +162,9 @@ hi User4 ctermfg=15 ctermbg=243
 hi User5 ctermfg=15 ctermbg=243
 
 " === PLUGIN SETTINGS === "
+" vim-markdown settings
+let g:vim_markdown_folding_disabled=1
+
 " nerdtree settings
 let NERDTreeShowHidden=1
 
