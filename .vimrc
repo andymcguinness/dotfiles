@@ -232,12 +232,12 @@ nmap <Left> <c-w>h
 nmap <Up> <c-w>k
 nmap <Down> <c-w>j
 
-" fix when I do uppercase versions of lowercase commands
-cmap Q q
-cmap W w
-cmap Wq wq
-cmap WQ wq
-cmap Bw bw
+" fixing :WQA derpage
+cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
+cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('Q'))
+cnoreabbrev <expr> Wq ((getcmdtype() is# ':' && getcmdline() is# 'Wq')?('wq'):('Wq'))
+cnoreabbrev <expr> Wqa ((getcmdtype() is# ':' && getcmdline() is# 'Wqa')?('wqa'):('Wqa'))
+cnoreabbrev <expr> Bw ((getcmdtype() is# ':' && getcmdline() is# 'Bw')?('bw'):('Bw'))
 
 " === FUNCTIONS === "
 " function to delete all hidden buffers
