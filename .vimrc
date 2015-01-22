@@ -81,12 +81,13 @@ set shiftwidth=4        " tab = 4 spaces
 set softtabstop=4       " tab = 4 spaces
 set smarttab            " be smart about tabs
 set expandtab           " spaces, not tabs
-set autoindent
 filetype plugin indent on
 
-" Ruby/Coffeescript indentation settings
+" Ruby/Coffeescript/Scss/Haml indentation settings
 au FileType ruby setl sw=2 sts=2
-au FileType coffeescript setl sw=2 sts=2
+au FileType coffee setl sw=2 sts=2
+au FileType scss setl sw=2 sts=2
+au FileType haml setl sw=2 sts=2
 
 " searching settings
 set incsearch              " highlights as you type an expression
@@ -99,17 +100,11 @@ set wildmode=list:longest,full
 
 " open to same spot in file when reopening
 autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \   exe "normal g`\"" |
+            \ endif
 " remember info about open buffers on close
 set viminfo^=%
-
-" view indentation levels
-" set list listchars=tab:\|\ 
-" highlight Whitespace cterm=underline gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
-" autocmd ColorScheme * highlight Whitespace gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
-" match Whitespace /  \+/
 
 " === TABLINE === "
 " colors -- make it purdy
@@ -144,7 +139,7 @@ set statusline+=%5*Percent:\ %-4P      " percent through doc
 function! Mode()
     redraw
     let l:mode = mode()
-    
+
     if     mode ==# "n"  | exec 'hi User1 ctermfg=15 ctermbg=33 | hi User2 ctermfg=33 ctermbg=243'    | return "NORMAL"
     elseif mode ==# "i"  | exec 'hi User1 ctermfg=15 ctermbg=40 | hi User2 ctermfg=40 ctermbg=243'  | return "INSERT"
     elseif mode ==# "r"  | exec 'hi User1 ctermfg=15 ctermbg=196 | hi User2 ctermfg=196 ctermbg=243'| return "REPLACE"
@@ -242,38 +237,39 @@ cmap Q q
 cmap W w
 cmap Wq wq
 cmap WQ wq
+cmap Bw bw
 
 " === FUNCTIONS === "
 " function to delete all hidden buffers
 function! Wipeout()
-  " list of *all* buffer numbers
-  let l:buffers = range(1, bufnr('$'))
+    " list of *all* buffer numbers
+    let l:buffers = range(1, bufnr('$'))
 
-  " what tab page are we in?
-  let l:currentTab = tabpagenr()
-  try
-    " go through all tab pages
-    let l:tab = 0
-    while l:tab < tabpagenr('$')
-      let l:tab += 1
+    " what tab page are we in?
+    let l:currentTab = tabpagenr()
+    try
+        " go through all tab pages
+        let l:tab = 0
+        while l:tab < tabpagenr('$')
+            let l:tab += 1
 
-      " go through all windows
-      let l:win = 0
-      while l:win < winnr('$')
-        let l:win += 1
-        " whatever buffer is in this window in this tab, remove it from
-        " l:buffers list
-        let l:thisbuf = winbufnr(l:win)
-        call remove(l:buffers, index(l:buffers, l:thisbuf))
-      endwhile
-    endwhile
+            " go through all windows
+            let l:win = 0
+            while l:win < winnr('$')
+                let l:win += 1
+                " whatever buffer is in this window in this tab, remove it from
+                " l:buffers list
+                let l:thisbuf = winbufnr(l:win)
+                call remove(l:buffers, index(l:buffers, l:thisbuf))
+            endwhile
+        endwhile
 
-    " if there are any buffers left, delete them
-    if len(l:buffers)
-      execute 'bwipeout' join(l:buffers)
-    endif
-  finally
-    " go back to our original tab page
-    execute 'tabnext' l:currentTab
-  endtry
+        " if there are any buffers left, delete them
+        if len(l:buffers)
+            execute 'bwipeout' join(l:buffers)
+        endif
+    finally
+        " go back to our original tab page
+        execute 'tabnext' l:currentTab
+    endtry
 endfunction

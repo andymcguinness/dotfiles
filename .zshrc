@@ -16,7 +16,8 @@ plugins=(bower brew common-aliases gem git npm svn-fast-info)
 # Other Oh-My-Zsh settings
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
+export PATH="/Users/mmcguinness/.rvm/gems/ruby-2.1.3@craftsman_club/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
 
 # === PERSONAL ALIASES === #
 alias vimrc='vim ~/.vimrc'
+unalias rm
