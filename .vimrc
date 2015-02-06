@@ -14,17 +14,18 @@ Plugin 'gmarik/Vundle.vim'
 Plugin '1995eaton/vim-better-css-completion', { 'for' : 'css' }
 Plugin '1995eaton/vim-better-javascript-completion', { 'for' : 'javascript' }
 Plugin 'airblade/vim-gitgutter'
-Plugin 'ap/vim-buftabline'
-" Plugin 'bling/vim-airline'
+" Plugin 'ap/vim-buftabline'
+Plugin 'bling/vim-airline'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'docunext/closetag.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'elzr/vim-json'
-Plugin 'flazz/vim-colorschemes'
+" Plugin 'flazz/vim-colorschemes'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mattn/emmet-vim'
+Plugin 'morhetz/gruvbox'
 Plugin 'msanders/snipmate.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'pangloss/vim-javascript'
@@ -73,8 +74,9 @@ if has("linebreak")
 endif
 
 " color settings
-colorscheme Tomorrow    " gawjus
-set t_Co=256            " 256 color mode engage
+colorscheme gruvbox       " gawjus
+set t_Co=256                " 256 color mode engage
+set background=dark
 
 " indentation settings
 set shiftwidth=4        " tab = 4 spaces
@@ -100,63 +102,68 @@ set wildmode=list:longest,full
 
 " open to same spot in file when reopening
 autocmd BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \   exe "normal g`\"" |
-            \ endif
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 " remember info about open buffers on close
 set viminfo^=%
 
-" === TABLINE === "
-" colors -- make it purdy
-hi TabLineSel ctermfg=7 ctermbg=33
-hi TabLineFill ctermfg=243
-
-" === STATUSLINE === "
-" make it appear
+ " === TABLINE === "
+" " colors -- make it purdy
+" hi TabLineSel ctermfg=255 ctermbg=33
+" hi TabLineFill ctermbg=236
+" hi TabLine ctermfg=247 ctermbg=240
+"
+ " === STATUSLINE === "
+" " make it appear
 set laststatus=2
-
-" create it
-set statusline=%1*\ %{Mode()}\ %0*        " what's the haps
-set statusline+=%2*\ %0*
-set statusline+=%4*[%n]              " buffer no.
-set statusline+=%3*\ \ %0*
-set statusline+=%5*\ \ %{fugitive#statusline()}
-set statusline+=%3*\ \ %0*
-set statusline+=%5*%f%m              " full filename
-set statusline+=%3*\ \ %0*
-set statusline+=%5*%y                " filetype
-
-set statusline+=%=                  " splits left/right
-
-set statusline+=%3*\ %0*
-set statusline+=%5*Cols:\ %-4c         " column counter
-set statusline+=%3*\ %0*
-set statusline+=%5*Lines:\ %l/%-4L     " lines of total lines
-set statusline+=%3*\ %0*
-set statusline+=%5*Percent:\ %-4P      " percent through doc
-
-" make it work
-function! Mode()
-    redraw
-    let l:mode = mode()
-
-    if     mode ==# "n"  | exec 'hi User1 ctermfg=15 ctermbg=33 | hi User2 ctermfg=33 ctermbg=243'    | return "NORMAL"
-    elseif mode ==# "i"  | exec 'hi User1 ctermfg=15 ctermbg=40 | hi User2 ctermfg=40 ctermbg=243'  | return "INSERT"
-    elseif mode ==# "r"  | exec 'hi User1 ctermfg=15 ctermbg=196 | hi User2 ctermfg=196 ctermbg=243'| return "REPLACE"
-    elseif mode ==# "R"  | exec 'hi User1 ctermfg=15 ctermbg=196 | hi User2 ctermfg=196 ctermbg=243'| return "REPLACE"
-    elseif mode ==# "v"  | exec 'hi User1 ctermfg=15 ctermbg=208 | hi User2 ctermfg=208 ctermbg=243'   | return "VISUAL"
-    elseif mode ==# "V"  | exec 'hi User1 ctermfg=15 ctermbg=208 | hi User2 ctermfg=208 ctermbg=243'   | return "V-LINE"
-    elseif mode ==# "" | exec 'hi User1 ctermfg=15 ctermbg=208 | hi User2 ctermfg=208 ctermbg=243'   | return "V-BLOCK"
-    else                 | return l:mode
-    endif
-endfunc
-
-" style it 
-hi User3 ctermfg=15 ctermbg=243
-hi User4 ctermfg=15 ctermbg=243
-hi User5 ctermfg=15 ctermbg=243
+"
+" " create it
+" set statusline=%1*\ %{Mode()}\ %0*        " what's the haps
+" set statusline+=%2*\ %0*
+" set statusline+=%4*[%n]              " buffer no.
+" set statusline+=%3*\ \ %0*
+" set statusline+=%5*\ \ %{fugitive#statusline()}
+" set statusline+=%3*\ \ %0*
+" set statusline+=%5*%f%m              " full filename
+" set statusline+=%3*\ \ %0*
+" set statusline+=%5*%y                " filetype
+"
+" set statusline+=%=                  " splits left/right
+"
+" set statusline+=%3*\ %0*
+" set statusline+=%5*Cols:\ %-4c         " column counter
+" set statusline+=%3*\ %0*
+" set statusline+=%5*Lines:\ %l/%-4L     " lines of total lines
+" set statusline+=%3*\ %0*
+" set statusline+=%5*Percent:\ %-4P      " percent through doc
+"
+" " make it work
+" function! Mode()
+"     redraw
+"     let l:mode = mode()
+"
+"     if     mode ==# \"n"  | exec 'hi User1 ctermfg=255 ctermbg=33 | hi User2 ctermfg=33 ctermbg=236'    | return \"NORMAL"
+"     elseif mode ==# \"i"  | exec 'hi User1 ctermfg=255 ctermbg=40 | hi User2 ctermfg=40 ctermbg=236'  | return \"INSERT"
+"     elseif mode ==# \"r"  | exec 'hi User1 ctermfg=255 ctermbg=196 | hi User2 ctermfg=196 ctermbg=236'| return \"REPLACE"
+"     elseif mode ==# \"R"  | exec 'hi User1 ctermfg=255 ctermbg=196 | hi User2 ctermfg=196 ctermbg=236'| return \"REPLACE"
+"     elseif mode ==# \"v"  | exec 'hi User1 ctermfg=255 ctermbg=208 | hi User2 ctermfg=208 ctermbg=236'   | return \"VISUAL"
+"     elseif mode ==# \"V"  | exec 'hi User1 ctermfg=255 ctermbg=208 | hi User2 ctermfg=208 ctermbg=236'   | return \"V-LINE"
+"     else                 | return l:mode
+"     endif
+" endfunc
+"
+" " style it 
+" hi User3 ctermfg=255 ctermbg=236
+" hi User4 ctermfg=255 ctermbg=236
+" hi User5 ctermfg=255 ctermbg=236
 
 " === PLUGIN SETTINGS === "
+" colorscheme setting
+if !has("gui_running")
+   let g:gruvbox_italic=0
+endif
+
 " vim-markdown settings
 let g:vim_markdown_folding_disabled=1
 
@@ -170,8 +177,20 @@ autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bu
 " vim-indent-guides settings
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=255
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=254
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=238
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
+
+" airline settings
+let g:airline_powerline_fonts=1
+let g:airline#extensions#bufferline#enabled = 0
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme="gruvbox"
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " === MAPPINGS === "
 " mapleader -- v important
@@ -198,8 +217,8 @@ nmap <leader>e :NERDTreeToggle<CR>
 nmap <leader>x :call Wipeout()<CR>
 
 " buffer-switching mapping
-nnoremap <silent> <leader>n :bn<CR>
-nnoremap <silent> <leader>b :bp<CR>
+nnoremap <silent> <Tab> :bn<CR>
+nnoremap <silent> <S-Tab> :bp<CR>
 
 " linewise moving mapping
 nnoremap j gj
