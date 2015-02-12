@@ -13,19 +13,19 @@ COMPLETION_WAITING_DOTS="true"
 # Plugins
 plugins=(bower brew bundler common-aliases gem git npm svn-fast-info)
 
-# Other Oh-My-Zsh settings
-source $ZSH/oh-my-zsh.sh
-source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export PATH="/Users/mmcguinness/.rvm/gems/ruby-2.1.3@craftsman_club/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
-
-# === PERSONAL ALIASES === #
-alias vimrc='vim ~/.vimrc'
-unalias rm
-
-# === OTHER STUFF === #
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"
+# === GENERAL SHELL SETTINGS === #
+if [[ $USER = "mmcguinness" ]]
+then
+    export PATH="/Users/mmcguinness/.rvm/gems/ruby-2.1.3/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3@craftsman_club/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
+else
+    export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
+fi
 
 # === RUN ON STARTUP === #
+source $ZSH/oh-my-zsh.sh
+source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"
+
 echo "
                 Y.                      _   
                 YiL                   .\`\`\`.  
@@ -37,7 +37,7 @@ echo "
        .YYYYYYY\$\$YYiiYY\$\$\$\$iiiYYYYYY;.ii;\`..   
       :YYY\$!.  TYiiYY\$\$\$\$\$YYYYYYYiiYYYYiYYii.    
       Y\$MM\$:   :YYYYYY\$!\"\`\`\"4YYYYYiiiYYYYiiYY.    
-   \`. :MM$\$b.,dYY$\$Yii\" :\'   :YYYYllYiiYYYiYY    
+   \`. :MM$\$b.,dYY$\$Yii\" :'   :YYYYllYiiYYYiYY    
 _.._ :\`4MM\$!YYYYYYYYYii,.__.diii\$\$YYYYYYYYYYY
 .,._ \$b\`P\`     \"4\$\$\$\$\$iiiiiiii\$\$\$\$YY\$\$\$\$\$\$YiY;
    \`,.\`\$:       :\$\$\$\$\$\$\$\$\$YYYYY\$\$\$\$\$\$\$\$\$YYiiYYL
@@ -48,5 +48,14 @@ _.._ :\`4MM\$!YYYYYYYYYii,.__.diii\$\$YYYYYYYYYYY
      :\$\$\$\$i;;iiiiidYYYYYYYYYY\$\$\$\$\$\$YYYYYYYiiYYYY. 
       \`\$\$\$\$\$\$\$YYYYYYYYYYYYY\$\$\$\$\$\$YYYYYYYYiiiYYYYYY    
       .i!\$\$\$\$\$\$YYYYYYYYY\$\$\$\$\$\$YYY\$\$YYiiiiiiYYYYYYY    
-     :YYiii\$\$\$\$\$\$\$YYYYYYY\$\$\$\$YY\$\$\$\$YYiiiiiYYYYYYi\'  
+     :YYiii\$\$\$\$\$\$\$YYYYYYY\$\$\$\$YY\$\$\$\$YYiiiiiYYYYYYi'  
 ....\"Have you doged today?\"...."
+
+# === PERSONAL ALIASES === #
+alias vimrc='vim ~/.vimrc'
+unalias rm
+alias dbmigrate='bundle exec rake db:migrate'
+alias dbdrop='bundle exec rake db:drop db:create db:migrate'
+
+# === RVM === #
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.

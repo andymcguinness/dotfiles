@@ -14,13 +14,11 @@ Plugin 'gmarik/Vundle.vim'
 Plugin '1995eaton/vim-better-css-completion', { 'for' : 'css' }
 Plugin '1995eaton/vim-better-javascript-completion', { 'for' : 'javascript' }
 Plugin 'airblade/vim-gitgutter'
-" Plugin 'ap/vim-buftabline'
 Plugin 'bling/vim-airline'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'docunext/closetag.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'elzr/vim-json'
-" Plugin 'flazz/vim-colorschemes'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'Lokaltog/vim-easymotion'
@@ -32,14 +30,9 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Shougo/neocomplcache.vim'
-Plugin 'Shougo/unite.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-haml'
-Plugin 'vim-scripts/matchit.zip.git'
-Plugin 'vim-scripts/Obvious-Mode'
 Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
 
 " various calls
@@ -67,6 +60,7 @@ set lazyredraw                  " don't redraw in macros
 set nostartofline               " don't jump to first character when paging
 set noshowmode                  " I already know what mode we're in thx to airline
 set foldmethod=manual           " don't auto fold things
+set laststatus=2                " show the statusline
 
 " show ↪ at the beginning of wrapped lines
 if has("linebreak")
@@ -108,55 +102,8 @@ autocmd BufReadPost *
 " remember info about open buffers on close
 set viminfo^=%
 
- " === TABLINE === "
-" " colors -- make it purdy
-" hi TabLineSel ctermfg=255 ctermbg=33
-" hi TabLineFill ctermbg=236
-" hi TabLine ctermfg=247 ctermbg=240
-"
- " === STATUSLINE === "
-" " make it appear
-set laststatus=2
-"
-" " create it
-" set statusline=%1*\ %{Mode()}\ %0*        " what's the haps
-" set statusline+=%2*\ %0*
-" set statusline+=%4*[%n]              " buffer no.
-" set statusline+=%3*\ \ %0*
-" set statusline+=%5*\ \ %{fugitive#statusline()}
-" set statusline+=%3*\ \ %0*
-" set statusline+=%5*%f%m              " full filename
-" set statusline+=%3*\ \ %0*
-" set statusline+=%5*%y                " filetype
-"
-" set statusline+=%=                  " splits left/right
-"
-" set statusline+=%3*\ %0*
-" set statusline+=%5*Cols:\ %-4c         " column counter
-" set statusline+=%3*\ %0*
-" set statusline+=%5*Lines:\ %l/%-4L     " lines of total lines
-" set statusline+=%3*\ %0*
-" set statusline+=%5*Percent:\ %-4P      " percent through doc
-"
-" " make it work
-" function! Mode()
-"     redraw
-"     let l:mode = mode()
-"
-"     if     mode ==# \"n"  | exec 'hi User1 ctermfg=255 ctermbg=33 | hi User2 ctermfg=33 ctermbg=236'    | return \"NORMAL"
-"     elseif mode ==# \"i"  | exec 'hi User1 ctermfg=255 ctermbg=40 | hi User2 ctermfg=40 ctermbg=236'  | return \"INSERT"
-"     elseif mode ==# \"r"  | exec 'hi User1 ctermfg=255 ctermbg=196 | hi User2 ctermfg=196 ctermbg=236'| return \"REPLACE"
-"     elseif mode ==# \"R"  | exec 'hi User1 ctermfg=255 ctermbg=196 | hi User2 ctermfg=196 ctermbg=236'| return \"REPLACE"
-"     elseif mode ==# \"v"  | exec 'hi User1 ctermfg=255 ctermbg=208 | hi User2 ctermfg=208 ctermbg=236'   | return \"VISUAL"
-"     elseif mode ==# \"V"  | exec 'hi User1 ctermfg=255 ctermbg=208 | hi User2 ctermfg=208 ctermbg=236'   | return \"V-LINE"
-"     else                 | return l:mode
-"     endif
-" endfunc
-"
-" " style it 
-" hi User3 ctermfg=255 ctermbg=236
-" hi User4 ctermfg=255 ctermbg=236
-" hi User5 ctermfg=255 ctermbg=236
+" make 0 go to the beginning of the line
+map 0 ^
 
 " === PLUGIN SETTINGS === "
 " colorscheme setting
@@ -235,9 +182,9 @@ nnoremap <leader>: :Tabularize /:<CR>
 nmap <leader>v :Unite buffer<CR>
 
 " function autocomplete mapping
-inoremap {<cr> {<cr>}<c-o>O<tab>
-inoremap [<cr> [<cr>]<c-o>O<tab>
-inoremap (<cr> (<cr>)<c-o>O<tab>
+inoremap {<cr> {<cr>}<c-o>O
+inoremap [<cr> [<cr>]<c-o>O
+inoremap (<cr> (<cr>)<c-o>O
 
 " remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
@@ -257,6 +204,9 @@ cnoreabbrev <expr> Q ((getcmdtype() is# ':' && getcmdline() is# 'Q')?('q'):('Q')
 cnoreabbrev <expr> Wq ((getcmdtype() is# ':' && getcmdline() is# 'Wq')?('wq'):('Wq'))
 cnoreabbrev <expr> Wqa ((getcmdtype() is# ':' && getcmdline() is# 'Wqa')?('wqa'):('Wqa'))
 cnoreabbrev <expr> Bw ((getcmdtype() is# ':' && getcmdline() is# 'Bw')?('bw'):('Bw'))
+
+" mapping undo to ctrl-z
+nmap <C-z> u<cr>
 
 " === FUNCTIONS === "
 " function to delete all hidden buffers
