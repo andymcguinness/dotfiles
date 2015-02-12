@@ -6,7 +6,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # === ZSH SETTINGS === #
-ZSH_THEME="dogenpunk"
+ZSH_THEME="smt"
 COMPLETION_WAITING_DOTS="true"
 
 # === OH MY ZSH SETTINGS === #
@@ -52,10 +52,22 @@ _.._ :\`4MM\$!YYYYYYYYYii,.__.diii\$\$YYYYYYYYYYY
 ....\"Have you doged today?\"...."
 
 # === PERSONAL ALIASES === #
+# Vim
 alias vimrc='vim ~/.vimrc'
+
+# Stopping zsh's zany rm behavior
 unalias rm
+
+# Restarting zsh
+alias reload='source ~/.zshrc'
+
+# Frequently used commands
 alias dbmigrate='bundle exec rake db:migrate'
 alias dbdrop='bundle exec rake db:drop db:create db:migrate'
+alias start='bundle exec rails s'
+
+# Push it real good
+alias ggpush='(afplay ~/Push_It_Clip.aif &> /dev/null &);git push origin $(current_branch)'
 
 # === RVM === #
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
