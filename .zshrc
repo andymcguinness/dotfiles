@@ -61,13 +61,15 @@ unalias rm
 # Restarting zsh
 alias reload='source ~/.zshrc'
 
-# Frequently used commands
+# Frequently used Craftsman Club commands
 alias dbmigrate='bundle exec rake db:migrate'
 alias dbdrop='bundle exec rake db:drop db:create db:migrate'
 alias start='bundle exec rails s'
+alias staging='git push staging $(current_branch):master'
+alias demo='git push demo $(current_branch):master'
 
 # Push it real good
-alias ggpush='(afplay ~/Push_It_Clip.aif &> /dev/null &);git push origin $(current_branch)'
+alias ggpushit='(afplay ~/Push_It_Clip.aif &> /dev/null &);git push origin $(current_branch)'
 
 # === RVM === #
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
