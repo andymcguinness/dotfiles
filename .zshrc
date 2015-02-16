@@ -69,7 +69,7 @@ alias staging='git push staging $(current_branch):master'
 alias demo='git push demo $(current_branch):master'
 
 # Push it real good
-alias ggpushit='(afplay ~/Push_It_Clip.aif &> /dev/null &);git push origin $(current_branch)'
+alias ggpushit='(afplay ~/Push_It_Real_Good.aif &> /dev/null &);git push origin $(current_branch)'
 
 # === RVM === #
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
