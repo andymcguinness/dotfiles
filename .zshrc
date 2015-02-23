@@ -67,6 +67,7 @@ alias dbdrop='bundle exec rake db:drop db:create db:migrate'
 alias start='bundle exec rails s'
 alias staging='git push staging $(current_branch):master'
 alias demo='git push demo $(current_branch):master'
+alias backstage='git push backstage $(current_branch):master'
 
 # Push it real good
 alias ggpushit='(afplay ~/Push_It_Real_Good.aif &> /dev/null &);git push origin $(current_branch)'
