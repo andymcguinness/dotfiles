@@ -1,6 +1,6 @@
 " VIMRC
 " 
-" by Maia McGuinness
+" by Andy McGuinness
 
 " === VUNDLE SETTINGS === "
 " basic settings
