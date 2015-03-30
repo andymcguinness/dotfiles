@@ -68,9 +68,11 @@ if has("linebreak")
 endif
 
 " color settings
-colorscheme gruvbox       " gawjus
 set t_Co=256                " 256 color mode engage
 set background=dark
+colorscheme wombat256mod       " gawjus
+set t_ut=
+hi clear SignColumn
 
 " indentation settings
 set shiftwidth=4        " tab = 4 spaces
@@ -81,6 +83,7 @@ filetype plugin indent on
 
 " Ruby/Coffeescript/Scss/Haml indentation settings
 au FileType ruby setl sw=2 sts=2
+au FileType eruby setl sw=2 sts=2
 au FileType coffee setl sw=2 sts=2
 au FileType scss setl sw=2 sts=2
 au FileType haml setl sw=2 sts=2
@@ -136,7 +139,7 @@ let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme="gruvbox"
+let g:airline_theme='wombat'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " === MAPPINGS === "

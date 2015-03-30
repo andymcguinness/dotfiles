@@ -6,7 +6,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # === ZSH SETTINGS === #
-ZSH_THEME="smt"
+ZSH_THEME="ys"
 COMPLETION_WAITING_DOTS="true"
 
 # === OH MY ZSH SETTINGS === #
@@ -63,8 +63,9 @@ alias reload='source ~/.zshrc'
 
 # Frequently used Craftsman Club commands
 alias dbmigrate='bundle exec rake db:migrate'
-alias dbdrop='bundle exec rake db:drop db:create db:migrate'
+alias dbdrop='bundle exec rake db:drop db:create db:migrate;rake make_super_admin:first_admin;'
 alias start='bundle exec rails s'
+alias dealstart='(redis-server &> /dev/null &);foreman start -p 3000'
 alias staging='git push staging $(current_branch):master'
 alias demo='git push demo $(current_branch):master'
 alias backstage='git push backstage $(current_branch):master'
