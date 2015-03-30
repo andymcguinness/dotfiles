@@ -22,6 +22,7 @@ Plugin 'elzr/vim-json'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin "MarcWeber/vim-addon-mw-utils"
 Plugin 'mattn/emmet-vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'msanders/snipmate.vim'
@@ -31,6 +32,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
+Plugin "tomtom/tlib_vim"
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
 Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
