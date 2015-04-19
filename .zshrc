@@ -24,7 +24,7 @@ fi
 # === RUN ON STARTUP === #
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"
+# source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"
 
 echo "
                 Y.                      _   
@@ -73,5 +73,12 @@ alias backstage='git push backstage $(current_branch):master'
 # Push it real good
 alias ggpushit='(afplay ~/Push_It_Real_Good.aif &> /dev/null &);git push origin $(current_branch)'
 
+# Edit my todo list
+alias todo='vim ~/Dropbox/todo.txt/todo.txt'
+
 # === RVM === #
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
+# === PERL === #
+PERL_MB_OPT="--install_base \"/Users/mmcguinness/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/mmcguinness/perl5"; export PERL_MM_OPT;

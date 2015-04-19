@@ -17,12 +17,13 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'docunext/closetag.vim'
+Plugin 'freitass/todo.txt-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'elzr/vim-json'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin "MarcWeber/vim-addon-mw-utils"
+Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'mattn/emmet-vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'msanders/snipmate.vim'
@@ -30,9 +31,10 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'pangloss/vim-javascript'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Raimondi/delimitMate'
+Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tcomment_vim'
-Plugin "tomtom/tlib_vim"
+Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
 Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
@@ -72,9 +74,9 @@ endif
 " color settings
 set t_Co=256                " 256 color mode engage
 set background=dark
-colorscheme wombat256mod       " gawjus
-set t_ut=
-hi clear SignColumn
+colorscheme spacegray       " gawjus
+" set t_ut=
+" hi clear SignColumn
 
 " indentation settings
 set shiftwidth=4        " tab = 4 spaces
@@ -131,8 +133,8 @@ let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=238
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
 
 " airline settings
 let g:airline_powerline_fonts=1
@@ -141,8 +143,9 @@ let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='wombat'
+let g:airline_theme='base16'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+
 
 " === MAPPINGS === "
 " mapleader -- v important
@@ -166,7 +169,7 @@ nmap <leader>q :nohlsearch<CR>
 nmap <leader>e :NERDTreeToggle<CR>
 
 " Wipeout() mapping
-nmap <leader>x :call Wipeout()<CR>
+nmap <leader>W :call Wipeout()<CR>
 
 " buffer-switching mapping
 nnoremap <silent> <Tab> :bn<CR>
@@ -212,6 +215,9 @@ cnoreabbrev <expr> Bw ((getcmdtype() is# ':' && getcmdline() is# 'Bw')?('bw'):('
 
 " mapping undo to ctrl-z
 nmap <C-z> u<cr>
+
+" mapping silver searcher
+nmap <leader>/ :Ag 
 
 " === FUNCTIONS === "
 " function to delete all hidden buffers
