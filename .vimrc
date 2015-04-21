@@ -152,6 +152,8 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " mapleader -- v important
 let mapleader = ","
 let g:mapleader = ","
+let maplocalleader = ","
+let g:maplocalleader = ","
 
 " copying && pasting mappings
 map <F2> :w !pbcopy<CR><CR>
