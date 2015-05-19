@@ -1,3 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/Users/mmcguinness/Local_Environments/_dotfiles/.vim/bundle/snipmate.vim'
+let g:netrw_dirhist_2='/Users/mmcguinness/Library/Application Support/appsolute/MAMP PRO'
+let g:netrw_dirhist_3='/Applications/MAMP/Library/bin'

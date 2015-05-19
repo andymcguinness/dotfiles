@@ -16,7 +16,8 @@ plugins=(bower brew bundler common-aliases gem git npm svn-fast-info)
 # === GENERAL SHELL SETTINGS === #
 if [[ $USER = "mmcguinness" ]]
 then
-    export PATH="/Users/mmcguinness/.rvm/gems/ruby-2.1.3/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3@craftsman_club/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
+    export GOPATH="/Users/mmcguinness/go/"
+    export PATH="$GOPATH/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3@craftsman_club/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
 else
     export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
 fi
@@ -75,6 +76,17 @@ alias ggpushit='(afplay ~/Push_It_Real_Good.aif &> /dev/null &);git push origin 
 
 # Edit my todo list
 alias todo='vim ~/Dropbox/todo.txt/todo.txt'
+
+# Run MySQL
+export MYSQL_HOME=/usr/local/mysql
+alias start_mysql='sudo $MYSQL_HOME/bin/mysqld_safe &> /dev/null &'
+alias stop_mysql='sudo $MYSQL_HOME/bin/mysqladmin shutdown'
+
+# Run Apache
+alias start_apache='sudo apachectl -k start'
+alias stop_apache='sudo apachectl -k graceful'
+
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
 
 # === RVM === #
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.

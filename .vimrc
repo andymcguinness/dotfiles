@@ -34,11 +34,11 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'StanAngeloff/php.vim', { 'for' : 'php' }
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
-Plugin 'vim-scripts/php.vim', { 'for' : 'php' }
 
 " various calls
 call vundle#end()            " required
@@ -80,8 +80,8 @@ colorscheme spacegray       " gawjus
 " hi clear SignColumn
 
 " indentation settings
-set shiftwidth=4        " tab = 4 spaces
-set softtabstop=4       " tab = 4 spaces
+set shiftwidth=2        " tab = 4 spaces
+set softtabstop=2       " tab = 4 spaces
 set smarttab            " be smart about tabs
 set expandtab           " spaces, not tabs
 filetype plugin indent on
