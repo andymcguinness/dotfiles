@@ -75,9 +75,9 @@ endif
 " color settings
 set t_Co=256                " 256 color mode engage
 set background=dark
-colorscheme spacegray       " gawjus
+colorscheme slate       " gawjus
 " set t_ut=
-" hi clear SignColumn
+hi clear SignColumn
 
 " indentation settings
 set shiftwidth=2        " tab = 4 spaces
@@ -92,6 +92,9 @@ au FileType eruby setl sw=2 sts=2
 au FileType coffee setl sw=2 sts=2
 au FileType scss setl sw=2 sts=2
 au FileType haml setl sw=2 sts=2
+
+" set .ejs files to be read like html
+au BufNewFile,BufRead *.ejs set filetype=html
 
 " searching settings
 set incsearch              " highlights as you type an expression
@@ -134,8 +137,8 @@ let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=236
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=236
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=237
 
 " airline settings
 let g:airline_powerline_fonts=1
@@ -144,7 +147,7 @@ let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='base16'
+let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 
