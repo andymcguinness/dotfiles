@@ -80,8 +80,8 @@ colorscheme slate       " gawjus
 hi clear SignColumn
 
 " indentation settings
-set shiftwidth=2        " tab = 4 spaces
-set softtabstop=2       " tab = 4 spaces
+set shiftwidth=4        " tab = 4 spaces
+set softtabstop=4       " tab = 4 spaces
 set smarttab            " be smart about tabs
 set expandtab           " spaces, not tabs
 filetype plugin indent on

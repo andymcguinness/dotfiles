@@ -19,7 +19,7 @@ then
     export GOPATH="/Users/mmcguinness/go/"
     export PATH="$GOPATH/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3@craftsman_club/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
 else
-    export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
+    export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 fi
 
 # === RUN ON STARTUP === #
