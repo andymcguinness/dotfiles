@@ -19,7 +19,6 @@ Plugin 'bling/vim-airline'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'docunext/closetag.vim'
 Plugin 'dsawardekar/wordpress.vim'
-Plugin 'ervandew/supertab'
 Plugin 'freitass/todo.txt-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'elzr/vim-json'
@@ -42,6 +41,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'StanAngeloff/php.vim', { 'for' : 'php' }
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tomtom/tcomment_vim'
@@ -90,8 +90,8 @@ colorscheme slate       " gawjus
 hi clear SignColumn
 
 " indentation settings
-set shiftwidth=4        " tab = 4 spaces
-set softtabstop=4       " tab = 4 spaces
+set shiftwidth=2        " tab = 4 spaces
+set softtabstop=2       " tab = 4 spaces
 set smarttab            " be smart about tabs
 set expandtab           " spaces, not tabs
 filetype plugin indent on
@@ -194,6 +194,12 @@ let g:tagbar_type_ruby = {
         \ 'F:singleton methods'
     \ ]
 \ }
+let g:tagbar_type_javascript = {
+    \ 'ctagsbin' : '/usr/local/bin/jsctags'
+\ }
+
+" neocomplete settings
+let g:neocomplete#enable_at_startup = 1
 
 
 " === MAPPINGS === "
@@ -223,7 +229,8 @@ nmap <leader>e :NERDTreeToggle<CR>
 nmap <leader>W :call Wipeout()<CR>
 
 " buffer-switching mapping
-nnoremap <silent> <S-Tab> :bn<CR>
+nnoremap <silent> <Tab> :bn<CR>
+nnoremap <silent> <S-Tab> :bp<CR>
 
 " linewise moving mapping
 nnoremap j gj
@@ -231,7 +238,6 @@ nnoremap k gk
 
 " Esc remapping
 inoremap <leader>i <Esc>
-nnoremap <Tab> <Esc>
 
 " common Tabularize mappings
 nnoremap <leader>= :Tabularize /=<CR>

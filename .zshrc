@@ -17,7 +17,7 @@ plugins=(bower brew bundler common-aliases gem git npm svn-fast-info)
 if [[ $USER = "mmcguinness" ]]
 then
     export GOPATH="/Users/mmcguinness/go/"
-    export PATH="$GOPATH/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3@craftsman_club/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
+    export PATH="$GOPATH/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3@craftsman_club/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin"
 else
     export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 fi
