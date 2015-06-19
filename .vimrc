@@ -30,7 +30,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'mattn/emmet-vim'
-Plugin 'majutsushi/tagbar'
 Plugin 'morhetz/gruvbox'
 Plugin 'msanders/snipmate.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -47,7 +46,6 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
-Plugin 'vim-php/tagbar-phpctags.vim'
 
 " various calls
 call vundle#end()            " required
@@ -159,35 +157,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='bubblegum'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
-" tagbar settings
-let g:tagbar_type_css = {
-\ 'ctagstype' : 'Css',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 's:selectors',
-        \ 'i:identities'
-    \ ]
-\ }
-let g:tagbar_type_markdown = {
-    \ 'ctagstype' : 'markdown',
-    \ 'kinds' : [
-        \ 'h:Heading_L1',
-        \ 'i:Heading_L2',
-        \ 'k:Heading_L3'
-    \ ]
-\ }
-let g:tagbar_phpctags_bin='~/.vim/bundle/tagbar-phpctags.vim/bin'
-let g:tagbar_type_ruby = {
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'c:classes',
-        \ 'd:describes',
-        \ 'C:contexts',
-        \ 'f:methods',
-        \ 'F:singleton methods'
-    \ ]
-\ }
-
 
 " === MAPPINGS === "
 " mapleader -- v important
@@ -264,8 +233,6 @@ nmap <C-z> u<cr>
 " mapping silver searcher
 nmap <leader>/ :Ag 
 
-" mapping tagbar
-nmap <F8> :TagbarToggle<cr>
 
 " === FUNCTIONS === "
 " function to delete all hidden buffers
