@@ -1,6 +1,6 @@
 # OH-MY-ZSH ZSHRC
 #
-# By Maia McGuinness
+# By Andy McGuinness
 
 # === BASIC CONFIG === #
 export ZSH=$HOME/.oh-my-zsh
@@ -55,6 +55,9 @@ _.._ :\`4MM\$!YYYYYYYYYii,.__.diii\$\$YYYYYYYYYYY
 # === PERSONAL ALIASES === #
 # Vim
 alias vimrc='vim ~/.vimrc'
+
+# Z Shell
+alias zshrc='vim ~/.zshrc'
 
 # Stopping zsh's zany rm behavior
 unalias rm
