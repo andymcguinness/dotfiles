@@ -23,3 +23,18 @@ Hello hi howdy. Welcome to my local environment!
 4. Commit and push to GitHub as your own repo
 5. ???
 6. Profit
+
+## Other
+
+### vtop
+
+1. `npm install -g vtop`
+2. `vtop --theme wizard`
+3. Enjoy
+
+### iTerm Settings
+
+1. No split-pane title
+2. No pane dimming
+3. SpaceGray iTerm2 color scheme
+4. Font is Anonymice Pro for Powerline 
