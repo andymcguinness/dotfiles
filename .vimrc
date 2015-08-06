@@ -40,8 +40,8 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'Shougo/neocomplete.vim'
+" Plugin 'shawncplus/phpcomplete.vim'
+" Plugin 'Shougo/neocomplete.vim'
 Plugin 'StanAngeloff/php.vim', { 'for' : 'php' }
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tomtom/tcomment_vim'
@@ -49,6 +49,8 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
 Plugin 'vim-php/tagbar-phpctags.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
 
 " various calls
 call vundle#end()            " required
@@ -200,6 +202,9 @@ let g:tagbar_type_javascript = {
 
 " neocomplete settings
 let g:neocomplete#enable_at_startup = 1
+
+" vim notes settings
+let g:notes_directories = ['~/Dropbox/Notes']
 
 
 " === MAPPINGS === "
