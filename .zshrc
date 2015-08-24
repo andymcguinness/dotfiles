@@ -32,9 +32,10 @@ antigen bundle git
 # Load external plugins
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle martnu/glimmer
 
 # Load theme
-antigen theme ys
+antigen theme martnu/glimmer glimmer
 
 # Apply settings
 antigen apply
