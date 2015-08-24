@@ -23,11 +23,14 @@ source antigen/antigen.zsh
 # Load oh-my-zsh
 antigen use oh-my-zsh
 
-# Load plugins
+# Load included plugins
 antigen bundle bower
 antigen bundle bundler
 antigen bundle common-aliases
 antigen bundle git
+
+# Load external plugins
+antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load theme
