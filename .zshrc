@@ -18,7 +18,7 @@ else
 fi
 
 # === ANTIGEN SETTINGS === #
-source antigen/antigen.zsh
+source ~/antigen/antigen.zsh
 
 # Load oh-my-zsh
 antigen use oh-my-zsh
@@ -32,7 +32,6 @@ antigen bundle git
 # Load external plugins
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle martnu/glimmer
 
 # Load theme
 antigen theme bira
