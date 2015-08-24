@@ -6,27 +6,37 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # === ZSH SETTINGS === #
-ZSH_THEME="ys"
 COMPLETION_WAITING_DOTS="true"
-
-# === OH MY ZSH SETTINGS === #
-# Plugins
-plugins=(bower brew bundler common-aliases gem git npm svn-fast-info)
 
 # === GENERAL SHELL SETTINGS === #
 if [[ $USER = "mmcguinness" ]]
 then
     export GOPATH="/Users/mmcguinness/go/"
-    export PATH="$GOPATH/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3@craftsman_club/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin"
+    export PATH="$GOPATH/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3@craftsman_club/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/git/bin"
 else
     export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 fi
 
-# === RUN ON STARTUP === #
-source $ZSH/oh-my-zsh.sh
-source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh"
+# === ANTIGEN SETTINGS === #
+source antigen/antigen.zsh
 
+# Load oh-my-zsh
+antigen use oh-my-zsh
+
+# Load plugins
+antigen bundle bower
+antigen bundle bundler
+antigen bundle common-aliases
+antigen bundle git
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load theme
+antigen theme ys
+
+# Apply settings
+antigen apply
+
+# === RUN ON STARTUP === #
 echo "
                 Y.                      _   
                 YiL                   .\`\`\`.  
