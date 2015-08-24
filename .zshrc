@@ -35,7 +35,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle martnu/glimmer
 
 # Load theme
-antigen theme martnu/glimmer glimmer
+antigen theme bira
 
 # Apply settings
 antigen apply
