@@ -17,6 +17,8 @@ else
     export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 fi
 
+export DEFAULT_USER="mmcguinness"
+
 # === ANTIGEN SETTINGS === #
 source ~/antigen/antigen.zsh
 
@@ -32,9 +34,10 @@ antigen bundle git
 # Load external plugins
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle andymcguinness/andys-theme
 
 # Load theme
-antigen theme bira
+antigen theme andymcguinness/andys-theme andys-theme
 
 # Apply settings
 antigen apply
