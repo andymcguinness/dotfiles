@@ -1,7 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/mmcguinness/Local_Environments/_dotfiles/.vim/bundle/snipmate.vim'
 let g:netrw_dirhist_2='/Users/mmcguinness/Library/Application Support/appsolute/MAMP PRO'
 let g:netrw_dirhist_3='/Applications/MAMP/Library/bin'
 let g:netrw_dirhist_4='/usr/local/mysql-5.6.15-osx10.7-x86_64'
 let g:netrw_dirhist_5='/Users/mmcguinness/Local_Environments/_dotfiles/.vim/bundle/tern_for_vim'
+let g:netrw_dirhist_6='/Users/amcguinness/.vim'
+let g:netrw_dirhist_7='/Users/amcguinness/.forever'

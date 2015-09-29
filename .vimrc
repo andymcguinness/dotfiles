@@ -40,8 +40,6 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'shawncplus/phpcomplete.vim'
-" Plugin 'Shougo/neocomplete.vim'
 Plugin 'StanAngeloff/php.vim', { 'for' : 'php' }
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tomtom/tcomment_vim'
