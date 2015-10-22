@@ -49,11 +49,6 @@ set expandtab           " spaces, not tabs "
 filetype plugin indent on
 
 " Ruby/Coffeescript/Scss/Haml indentation settings "
-au FileType ruby setl sw=2 sts=2
-au FileType eruby setl sw=2 sts=2
-au FileType coffee setl sw=2 sts=2
-au FileType scss setl sw=2 sts=2
-au FileType haml setl sw=2 sts=2
 au FileType php setl sw=4 sts=4
 
 " set .ejs files to be read like html "
