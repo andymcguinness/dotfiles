@@ -1,57 +1,11 @@
 " VIMRC "
 " by Andy McGuinness "
 
-" === VUNDLE SETTINGS === "
+" === PATHOGEN === "
 " basic settings "
 set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-
-" plugins "
-Plugin '1995eaton/vim-better-css-completion', { 'for' : 'css' }
-Plugin '1995eaton/vim-better-javascript-completion', { 'for' : 'javascript' }
-Plugin 'airblade/vim-gitgutter'
-Plugin 'ap/vim-css-color'
-Plugin 'bling/vim-airline'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'docunext/closetag.vim'
-Plugin 'dsawardekar/wordpress.vim'
-Plugin 'freitass/todo.txt-vim'
-Plugin 'godlygeek/tabular'
-Plugin 'elzr/vim-json'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'jszakmeister/markdown2ctags'
-Plugin 'JulesWang/css.vim'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'majutsushi/tagbar'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'msanders/snipmate.vim'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'Raimondi/delimitMate'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'StanAngeloff/php.vim', { 'for' : 'php' }
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'tomtom/tlib_vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-haml'
-Plugin 'vim-php/tagbar-phpctags.vim'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-notes'
-
-" various calls "
-call vundle#end()
 filetype plugin indent on
+execute pathogen#infect()
 
 " === BASIC SETTINGS === "
 " various settings "
@@ -100,6 +54,7 @@ au FileType eruby setl sw=2 sts=2
 au FileType coffee setl sw=2 sts=2
 au FileType scss setl sw=2 sts=2
 au FileType haml setl sw=2 sts=2
+au FileType php setl sw=4 sts=4
 
 " set .ejs files to be read like html "
 au BufNewFile,BufRead *.ejs set filetype=html
