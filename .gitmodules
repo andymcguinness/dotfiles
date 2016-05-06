@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/markdown2ctags"]
 	path = .vim/bundle/markdown2ctags
 	url = https://github.com/jszakmeister/markdown2ctags.git
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
