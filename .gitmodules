@@ -43,3 +43,6 @@
 [submodule ".vim/bundle/tern_for_vim"]
 	path = .vim/bundle/tern_for_vim
 	url = https://github.com/ternjs/tern_for_vim.git
+[submodule ".vim/bundle/tlib_vim"]
+	path = .vim/bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
