@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/javascript-libraries-syntax.vim"]
 	path = .vim/bundle/javascript-libraries-syntax.vim
 	url = https://github.com/othree/javascript-libraries-syntax.vim.git
+[submodule ".vim/bundle/markdown2ctags"]
+	path = .vim/bundle/markdown2ctags
+	url = https://github.com/jszakmeister/markdown2ctags.git
