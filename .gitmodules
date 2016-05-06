@@ -64,3 +64,6 @@
 [submodule ".vim/bundle/vim-better-javascript-completion"]
 	path = .vim/bundle/vim-better-javascript-completion
 	url = https://github.com/1995eaton/vim-better-javascript-completion.git
+[submodule ".vim/bundle/vim-coffee-script"]
+	path = .vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
