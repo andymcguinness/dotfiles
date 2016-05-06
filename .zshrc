@@ -9,13 +9,7 @@ export ZSH=$HOME/.oh-my-zsh
 COMPLETION_WAITING_DOTS="true"
 
 # === GENERAL SHELL SETTINGS === #
-if [[ $USER = "mmcguinness" ]]
-then
-    export GOPATH="/Users/mmcguinness/go/"
-    export PATH="$GOPATH/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3/bin:/Users/mmcguinness/.rvm/gems/ruby-2.1.3@craftsman_club/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/git/bin"
-else
-    export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-fi
+export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 
 export DEFAULT_USER="mmcguinness"
 
@@ -81,15 +75,6 @@ unalias rm
 # Restarting zsh
 alias reload='source ~/.zshrc'
 
-# Frequently used Craftsman Club commands
-alias dbmigrate='bundle exec rake db:migrate'
-alias dbdrop='bundle exec rake db:drop db:create db:migrate;rake make_super_admin:first_admin;'
-alias start='bundle exec rails s'
-alias dealstart='(redis-server &> /dev/null &);foreman start -p 3000'
-alias staging='git push staging $(current_branch):master'
-alias demo='git push demo $(current_branch):master'
-alias backstage='git push backstage $(current_branch):master'
-
 # Push it real good
 alias ggpushit='(afplay ~/Push_It_Real_Good.aif &> /dev/null &);git push origin $(current_branch)'
 
@@ -105,11 +90,25 @@ alias stop_mysql='sudo $MYSQL_HOME/bin/mysqladmin shutdown'
 alias start_apache='sudo apachectl -k start'
 alias stop_apache='sudo apachectl -k graceful'
 
+# Fuck (the program)
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+
+# Common git commands
+alias production='git push production master'
+alias staging='git push staging staging:master'
 
 # === RVM === #
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-# === PERL === #
-PERL_MB_OPT="--install_base \"/Users/mmcguinness/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/mmcguinness/perl5"; export PERL_MM_OPT;
+# === ITERM CONFIG === #
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+function iterm2_print_user_vars() {
+  iterm2_set_user_var currTime $(date +%T)
+}
+((while [ 1 ] ; do iterm2_print_user_vars; sleep 1; done) &)
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/amcguinness/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/amcguinness/google-cloud-sdk/completion.zsh.inc'
