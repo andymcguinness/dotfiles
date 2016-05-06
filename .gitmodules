@@ -61,3 +61,6 @@
 [submodule ".vim/bundle/vim-better-css-completion"]
 	path = .vim/bundle/vim-better-css-completion
 	url = https://github.com/1995eaton/vim-better-css-completion.git
+[submodule ".vim/bundle/vim-better-javascript-completion"]
+	path = .vim/bundle/vim-better-javascript-completion
+	url = https://github.com/1995eaton/vim-better-javascript-completion.git
