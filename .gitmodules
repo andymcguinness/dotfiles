@@ -109,3 +109,6 @@
 [submodule ".vim/bundle/vim-pug"]
 	path = .vim/bundle/vim-pug
 	url = https://github.com/digitaltoad/vim-pug.git
+[submodule ".vim/bundle/wordpress.vim"]
+	path = .vim/bundle/wordpress.vim
+	url = https://github.com/dsawardekar/wordpress.vim.git
