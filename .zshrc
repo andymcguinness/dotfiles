@@ -69,6 +69,12 @@ alias vimrc='vim ~/.vimrc'
 # Z Shell
 alias zshrc='vim ~/.zshrc'
 
+# HyperTerm
+alias hyperconfig='vim ~/.hyperterm.js'
+
+# Easy access to notes
+alias vimnotes='vim ~/Dropbox/Notes'
+
 # Stopping zsh's zany rm behavior
 unalias rm
 
@@ -99,16 +105,3 @@ alias staging='git push staging staging:master'
 
 # === RVM === #
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
-# === ITERM CONFIG === #
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-function iterm2_print_user_vars() {
-  iterm2_set_user_var currTime $(date +%T)
-}
-((while [ 1 ] ; do iterm2_print_user_vars; sleep 1; done) &)
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/amcguinness/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-source '/Users/amcguinness/google-cloud-sdk/completion.zsh.inc'
