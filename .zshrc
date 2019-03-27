@@ -75,9 +75,6 @@ alias hyperconfig='vim ~/.hyperterm.js'
 # Easy access to notes
 alias vimnotes='vim ~/Dropbox/Notes'
 
-# Stopping zsh's zany rm behavior
-unalias rm
-
 # Restarting zsh
 alias reload='source ~/.zshrc'
 
