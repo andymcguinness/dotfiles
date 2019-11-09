@@ -11,7 +11,7 @@ COMPLETION_WAITING_DOTS="true"
 # === GENERAL SHELL SETTINGS === #
 export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 
-export DEFAULT_USER="mmcguinness"
+export DEFAULT_USER="andy"
 
 # === ANTIGEN SETTINGS === #
 source ~/antigen/antigen.zsh
@@ -76,7 +76,7 @@ alias hyperconfig='vim ~/.hyperterm.js'
 alias vimnotes='vim ~/Dropbox/Notes'
 
 # Restarting zsh
-alias reload='source ~/.zshrc'
+alias reload='exec zsh'
 
 # Push it real good
 alias ggpushit='(afplay ~/Push_It_Real_Good.aif &> /dev/null &);git push origin $(current_branch)'
@@ -102,3 +102,7 @@ alias staging='git push staging staging:master'
 
 # === RVM === #
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
