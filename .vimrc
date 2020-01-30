@@ -88,7 +88,6 @@ let NERDTreeShowHidden=1
 
 " closetag settings "
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
-autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag.vim/plugin/closetag.vim
 
 " vim-indent-guides settings "
 let g:indent_guides_enable_on_vim_startup=1
@@ -97,6 +96,9 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=236
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=237
+
+" delimitmate settings "
+ au FileType html let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " airline settings "
 let g:airline_powerline_fonts=1
@@ -145,9 +147,6 @@ let g:tagbar_type_ruby = {
 let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '/usr/local/bin/jsctags'
 \ }
-
-" neocomplete settings "
-let g:neocomplete#enable_at_startup = 1
 
 " vim notes settings "
 let g:notes_directories = ['~/Dropbox/Notes']
