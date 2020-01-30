@@ -6,13 +6,13 @@
 	url = https://github.com/rking/ag.vim.git
 [submodule ".vim/bundle/closetag.vim"]
 	path = .vim/bundle/closetag.vim
-	url = https://github.com/vim-scripts/closetag.vim.git
+	url = https://github.com/docunext/closetag.vim
 [submodule ".vim/bundle/delimitMate"]
 	path = .vim/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
 [submodule ".vim/bundle/emmet-vim"]
 	path = .vim/bundle/emmet-vim
-	url = https://github.com/mattn/emmet-vim.git
+	url = https://github.com/mattn/emmet-vim
 [submodule ".vim/bundle/gruvbox"]
 	path = .vim/bundle/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
@@ -118,3 +118,6 @@
 [submodule "antigen"]
 	path = antigen
 	url = https://github.com/zsh-users/antigen.git
+[submodule ".vim/bundle/vim-snipmate"]
+	path = .vim/bundle/vim-snipmate
+	url = https://github.com/garbas/vim-snipmate
