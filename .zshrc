@@ -94,7 +94,7 @@ alias start_apache='sudo apachectl -k start'
 alias stop_apache='sudo apachectl -k graceful'
 
 # Fuck (the program)
-alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+eval $(thefuck --alias)
 
 # Common git commands
 alias production='git push production master'
