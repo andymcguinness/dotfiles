@@ -39,7 +39,7 @@ endif
 set t_Co=256
 set termguicolors
 set background=dark
-colorscheme hybrid
+colo seoul256
 hi clear SignColumn
 
 " indentation settings "

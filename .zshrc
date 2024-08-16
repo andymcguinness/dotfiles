@@ -24,14 +24,16 @@ antigen bundle bower
 antigen bundle bundler
 antigen bundle common-aliases
 antigen bundle git
+antigen bundle colored-man-pages
 
 # Load external plugins
 antigen bundle unixorn/autoupdate-antigen.zshplugin
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle andymcguinness/andys-theme
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
 
 # Load theme
-antigen theme andymcguinness/andys-theme andys-theme
+antigen theme geometry-zsh/geometry
 
 # Apply settings
 antigen apply
